@@ -1,0 +1,34 @@
+SWEN-250 Activity Journal
+Ruby – Diet Manager
+
+Name: Jimmy Dugan
+
+NOTE: Create additional Part 1 & 2 log entries 
+based on the order of implementation.
+
+================================================================
+Part 1 – Product & Unit Test Classes – Start
+Estimated Time	H3 MM
+Plan for this level:
+Read the comments for each function to harvest an understanding of what I need to do.
+
+Part 1 – Product & Unit Test Classes – Completed
+Actual Time	H5 MM
+Lessons learned, problems encountered, obstacles overcome, etc.
+Had a lot of issues with the log with the date formats - - - vs / / / and keeping track of that.Was eventually able to complete.
+================================================================
+Part 2 – DietManager Levels – Start
+Estimated Time	H4 MM
+Plan for this level:
+Read the comments for each function to harvest an understanding of what I need to do.
+
+Part 2 – DietManager Levels – Completed
+Actual Time	H5 MM
+Lessons learned, problems encountered, obstacles overcome, etc.
+Had issues with storing the items (log) because it would rewrite the entire text file in the wrong format and then break the program. Was able to debug. Also had issues with overall formatting in some cases for the display.
+
+================================================================
+Overall Summary
+Estimated Total Time	H7 MM
+Actual Total Time	H10 MM
+Project reflection: Thought this was good practice of Ruby OO

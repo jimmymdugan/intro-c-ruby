@@ -1,0 +1,467 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <link rel="stylesheet" type="text/css"
+ href="http://www.se.rit.edu/resources/style-sheets/SEdepartment.css">
+  <script language="JavaScript">
+	var course_number = "SWEN 250"; // Change this to be the title of the course
+	var course_title = "Personal Software Engineering"; // Change this to be the title of the course
+	var section = "01"; // Change this to be the title of the course
+	full_title = course_number + " " + course_title;
+  </script><!-- Do not change this -->
+  <script language="JavaScript"
+ src="http://www.se.rit.edu/resources/js/se.js"></script>
+  <script language="JavaScript">
+	document.title = course_number + "-" + section + " " + course_title; // No need to change this
+  </script><!-- Feel free to add custom styles if you like, but we'd rather put it in SEDepartment.css if at all possible -->
+  <style type="text/css">
+td.week {
+	text-align: center;
+}
+  </style>
+</head>
+<body>
+<header> <a href="http://www.se.rit.edu"
+ alt="Software Engineering Department"> <img
+ src="http://www.se.rit.edu/resources/images/se_logo.png"> </a>
+</header>
+<h1>
+<script language="JavaScript">
+				document.write(document.title);
+			</script>
+		</h1>
+		<div class=clear></div>
+	</header>
+	<nav>
+		<ul>
+<!--			<li><a href="../../syllabus.html">Syllabus</a></li>
+			<li><a href="../../01/index.html">Schedule</a></li>
+			<li><a href="../../resources/index.html">Resources</a></li>
+-->
+		</ul>
+	</nav>
+	<article>
+		<header> </header>
+
+		<h1>C PRACTICUM: Secret Enciphering / Deciphering of Text</h1>
+		<p>
+			You have <strong>75 minutes</strong> to complete this work. <br><br>
+<h2>Overview</h2>
+<big><big>In
+this practicum you will implement a simple encipher / decipher system
+to create and reveal "secret" messages. The encoding is a type of
+Roman cipher, used during their campaigns in Gaul.&nbsp;Given that
+this is one of the easiest ciphers to
+break, calls into question the smarts of the Germanic
+tribes.&nbsp;</big></big>
+<p><big><big>In our case the cipher works on (and <span style="font-style: italic; font-weight: bold;">only</span>
+on) the printable ASCII characters - those whose numeric code is
+greater than that of the SPACE character and less than that of the DEL character.
+
+<table  cellpadding="3" cellspacing="1" border="0">
+<tbody>
+<tr>
+<td valign="top">
+<h2>How it works</h2>
+<strong>Look at the table</strong> to the right and you will see that there are exactly 94 such characters, broken into two halves of 47
+characters each along the ASCII table. <br><br>A character in the first half (codes 33 through 79) is
+replaced by the corresponding one in the second half (e.g., the
+character whose code is <strong>greater</strong> by 47). Similarly, codes in the second
+half (80 through 126) are replaced by their correspondents from the
+first half (e.g., whose codes are 47 <strong>smaller</strong>). <br><br>A useful property of
+this approach is that enciphered text can be deciphered by using the
+same algorithm again! Note that newlines and spaces are
+ignored and not enciphered or deciphered but are instead maintained. &nbsp;</big></big></p>
+
+<p><h3>Example:</h3>
+<big>Entered text:</big></p>
+<p><big><big><span style="font-family: monospace; font-weight: bold;">Hello, world!</span></big></big></p>
+<big>Enciphered text:</big></p>
+<p><big><big><span style="font-family: monospace; font-weight: bold;">w6==@[ H@C=5P</span></big></big></p>
+<br>
+</big>
+
+<h2>Program Specification</h2>
+<p>Your program will read a line of characters;&nbsp;no line will have more
+than 20 characters (ignoring the terminating end-of-line character).</p>
+<p>Next you will traverse the array, translating characters according to
+the algorithm above. </p>
+<p>Finally you will print out the translated line.
+You will do this until the entire file is processed (e.g., when you
+encounter EOF).</p>
+
+<p><strong> * NOTE:</strong> We recommend you begin your implementation by reading the comments in the code and working on the translation functions <u>first</u>&#x21;</p>
+
+</td>
+<td>
+<h2>ASCII Printable Characters</h2>
+<table style="font-family: verdana,arial; font-style: normal; font-variant: normal; font-weight: normal; font-size: 16px; line-height: normal; font-size-adjust: none; font-stretch: normal; text-align: left; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; background-color: rgb(204, 204, 204);" cellpadding="3" cellspacing="1" border="1">
+<tbody>
+<tr>
+<td style="text-align: center; color: white; font-weight: bold; vertical-align: top; background-color: rgb(157, 35, 96);" rowspan="1" colspan="2">1st Half<br>
+</td>
+<td style="text-align: center; color: white; font-weight: bold; vertical-align: top; background-color: rgb(157, 35, 96);" rowspan="1" colspan="2">2nd Half<br>
+</td>
+</tr>
+<tr>
+<td class="cellHead" style="padding: 4px; color: white; font-size: 12px; margin-top: 10px; background-color: rgb(157, 35, 96);" width="40"><b>Code</b></td>
+<td class="cellHead" style="padding: 4px; color: white; font-size: 12px; margin-top: 10px; background-color: rgb(157, 35, 96);" width="50"><b>Symbol</b></td>
+<td class="cellHead" style="padding: 4px; width: 54px; color: white; font-size: 12px; margin-top: 10px; background-color: rgb(157, 35, 96);"><b>Code</b></td>
+<td class="cellHead" style="padding: 4px; color: white; font-size: 12px; margin-top: 10px; background-color: rgb(157, 35, 96);"><b>Symbol</b></td>
+</tr>
+<tr>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">33</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">!</td>
+<td style="width: 54px; font-size: 12px; background-color: rgb(255, 255, 255);">80</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">P</td>
+</tr>
+<tr>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">34</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">"</td>
+<td style="width: 54px; font-size: 12px; background-color: rgb(255, 255, 255);">81</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">Q</td>
+</tr>
+<tr>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">35</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">#</td>
+<td style="width: 54px; font-size: 12px; background-color: rgb(255, 255, 255);">82</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">R</td>
+</tr>
+<tr>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">36</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">$</td>
+<td style="width: 54px; font-size: 12px; background-color: rgb(255, 255, 255);">83</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">S</td>
+</tr>
+<tr>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">37</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">%</td>
+<td style="width: 54px; font-size: 12px; background-color: rgb(255, 255, 255);">84</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">T</td>
+</tr>
+<tr>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">38</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">&amp;</td>
+<td style="width: 54px; font-size: 12px; background-color: rgb(255, 255, 255);">85</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">U</td>
+</tr>
+<tr>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">39</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">'</td>
+<td style="width: 54px; font-size: 12px; background-color: rgb(255, 255, 255);">86</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">V</td>
+</tr>
+<tr>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">40</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">(</td>
+<td style="width: 54px; font-size: 12px; background-color: rgb(255, 255, 255);">87</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">W</td>
+</tr>
+<tr>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">41</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">)</td>
+<td style="width: 54px; font-size: 12px; background-color: rgb(255, 255, 255);">88</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">X</td>
+</tr>
+<tr>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">42</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">*</td>
+<td style="width: 54px; font-size: 12px; background-color: rgb(255, 255, 255);">89</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">Y</td>
+</tr>
+<tr>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">43</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">+</td>
+<td style="width: 54px; font-size: 12px; background-color: rgb(255, 255, 255);">90</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">Z</td>
+</tr>
+<tr>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">44</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">,</td>
+<td style="width: 54px; font-size: 12px; background-color: rgb(255, 255, 255);">91</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">[</td>
+</tr>
+<tr>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">45</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">-</td>
+<td style="width: 54px; font-size: 12px; background-color: rgb(255, 255, 255);">92</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">\</td>
+</tr>
+<tr>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">46</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">.</td>
+<td style="width: 54px; font-size: 12px; background-color: rgb(255, 255, 255);">93</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">]</td>
+</tr>
+<tr>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">47</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">/</td>
+<td style="width: 54px; font-size: 12px; background-color: rgb(255, 255, 255);">94</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">^</td>
+</tr>
+<tr>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">48</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">0</td>
+<td style="width: 54px; font-size: 12px; background-color: rgb(255, 255, 255);">95</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">_</td>
+</tr>
+<tr>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">49</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">1</td>
+<td style="width: 54px; font-size: 12px; background-color: rgb(255, 255, 255);">96</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">`</td>
+</tr>
+<tr>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">50</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">2</td>
+<td style="width: 54px; font-size: 12px; background-color: rgb(255, 255, 255);">97</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">a</td>
+</tr>
+<tr>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">51</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">3</td>
+<td style="width: 54px; font-size: 12px; background-color: rgb(255, 255, 255);">98</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">b</td>
+</tr>
+<tr>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">52</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">4</td>
+<td style="width: 54px; font-size: 12px; background-color: rgb(255, 255, 255);">99</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">c</td>
+</tr>
+<tr>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">53</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">5</td>
+<td style="width: 54px; font-size: 12px; background-color: rgb(255, 255, 255);">100</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">d</td>
+</tr>
+<tr>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">54</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">6</td>
+<td style="width: 54px; font-size: 12px; background-color: rgb(255, 255, 255);">101</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">e</td>
+</tr>
+<tr>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">55</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">7</td>
+<td style="width: 54px; font-size: 12px; background-color: rgb(255, 255, 255);">102</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">f</td>
+</tr>
+<tr>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">56</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">8</td>
+<td style="width: 54px; font-size: 12px; background-color: rgb(255, 255, 255);">103</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">g</td>
+</tr>
+<tr>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">57</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">9</td>
+<td style="width: 54px; font-size: 12px; background-color: rgb(255, 255, 255);">104</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">h</td>
+</tr>
+<tr>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">58</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">:</td>
+<td style="width: 54px; font-size: 12px; background-color: rgb(255, 255, 255);">105</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">i</td>
+</tr>
+<tr>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">59</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">;</td>
+<td style="width: 54px; font-size: 12px; background-color: rgb(255, 255, 255);">106</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">j</td>
+</tr>
+<tr>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">60</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">&lt;</td>
+<td style="width: 54px; font-size: 12px; background-color: rgb(255, 255, 255);">107</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">k</td>
+</tr>
+<tr>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">61</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">=</td>
+<td style="width: 54px; font-size: 12px; background-color: rgb(255, 255, 255);">108</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">l</td>
+</tr>
+<tr>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">62</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">&gt;</td>
+<td style="width: 54px; font-size: 12px; background-color: rgb(255, 255, 255);">109</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">m</td>
+</tr>
+<tr>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">63</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">?</td>
+<td style="width: 54px; font-size: 12px; background-color: rgb(255, 255, 255);">110</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">n</td>
+</tr>
+<tr>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">64</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">@</td>
+<td style="width: 54px; font-size: 12px; background-color: rgb(255, 255, 255);">111</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">o</td>
+</tr>
+<tr>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">65</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">A</td>
+<td style="width: 54px; font-size: 12px; background-color: rgb(255, 255, 255);">112</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">p</td>
+</tr>
+<tr>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">66</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">B</td>
+<td style="width: 54px; font-size: 12px; background-color: rgb(255, 255, 255);">113</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">q</td>
+</tr>
+<tr>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">67</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">C</td>
+<td style="width: 54px; font-size: 12px; background-color: rgb(255, 255, 255);">114</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">r</td>
+</tr>
+<tr>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">68</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">D</td>
+<td style="width: 54px; font-size: 12px; background-color: rgb(255, 255, 255);">115</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">s</td>
+</tr>
+<tr>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">69</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">E</td>
+<td style="width: 54px; font-size: 12px; background-color: rgb(255, 255, 255);">116</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">t</td>
+</tr>
+<tr>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">70</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">F</td>
+<td style="width: 54px; font-size: 12px; background-color: rgb(255, 255, 255);">117</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">u</td>
+</tr>
+<tr>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">71</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">G</td>
+<td style="width: 54px; font-size: 12px; background-color: rgb(255, 255, 255);">118</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">v</td>
+</tr>
+<tr>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">72</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">H</td>
+<td style="width: 54px; font-size: 12px; background-color: rgb(255, 255, 255);">119</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">w</td>
+</tr>
+<tr>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">73</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">I</td>
+<td style="width: 54px; font-size: 12px; background-color: rgb(255, 255, 255);">120</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">x</td>
+</tr>
+<tr>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">74</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">J</td>
+<td style="width: 54px; font-size: 12px; background-color: rgb(255, 255, 255);">121</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">y</td>
+</tr>
+<tr>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">75</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">K</td>
+<td style="width: 54px; font-size: 12px; background-color: rgb(255, 255, 255);">122</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">z</td>
+</tr>
+<tr>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">76</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">L</td>
+<td style="width: 54px; font-size: 12px; background-color: rgb(255, 255, 255);">123</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">{</td>
+</tr>
+<tr>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">77</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">M</td>
+<td style="width: 54px; font-size: 12px; background-color: rgb(255, 255, 255);">124</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">|</td>
+</tr>
+<tr>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">78</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">N</td>
+<td style="width: 54px; font-size: 12px; background-color: rgb(255, 255, 255);">125</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">}</td>
+</tr>
+<tr>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">79</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">O</td>
+<td style="width: 54px; font-size: 12px; background-color: rgb(255, 255, 255);">126</td>
+<td style="font-size: 12px; background-color: rgb(255, 255, 255);">~</td>
+</tr>
+</tbody>
+</table>
+
+
+</td>
+</tr>
+</tbody>
+</table>
+<h2>Instructions</h2>
+<p>Create a folder called <span style="font-weight: bold;">CPracticum/</span> and
+download <a href="practicum.zip">practicum.zip</a>.
+Here's a description of the files:
+<ul>
+<li><span style="font-weight: bold; font-family: Lucida Console;">julius.c</span>- a skeleton program with comments on elements you have to write. Please make sure to read through it all before implementation.&nbsp;</li>
+<li><span style="font-weight: bold; font-family: Lucida Console;">main.c</span>- a skeleton program of your main function for calling from the command line. DON'T FORGET THIS ONE!&nbsp;</li>
+<li><span style="font-weight: bold; font-family: Lucida Console;">julius.h</span>- the header file with your function prototypes and MAXLINESIZE constant. Do not edit. &nbsp;</li>
+<li><span style="font-weight: bold; font-family: Lucida Console;">julius_tests.c</span>- some basic unit tests you should use to work incrementally. Do not edit. &nbsp;</li>
+<li><span style="font-weight: bold; font-family: Lucida Console;">plain.txt</span>- a plain text file for input to your program.</li>
+<li><span style="font-weight: bold; font-family: Lucida Console;">cipher.txt</span> - a plain text file with the proper encoding of plain.txt
+<li><span style="font-weight: bold; font-family: Lucida Console;">Makefile</span>
+- a build file for you to compile and run your tests with.</li>
+</ul>
+We expect the code to be properly indented, to
+use <small><span style="font-weight: bold; font-family: Lucida Console;">#define</span></small>
+constants where appropriate, and to write character constants in
+character notation. You need not add any further documentation.
+</p>
+
+<h2>Building and Testing</h2>
+<ul>
+	<li>Create the correct directory and "cd" into that directory.</li>
+	<li>Use "wget" to download the zip file.</li>
+	<li>Use "unzip" to unzip that zip file.</li>
+	<li>Compile and link your code using "make".</li>
+	<ul><li><span style="font-weight: bold; font-family: Lucida Console;">make</span></li></ul>
+	<li>To compile and run the unit tests:</li>
+	<ul><li><span style="font-weight: bold; font-family: Lucida Console;">make test</span></li></ul>
+	<li>To run the program to process "plain.txt" and compare your output with the correct output:</li>
+	<ul><li><span style="font-weight: bold; font-family: Lucida Console;">make test_full</span></li></ul>
+	<li>To debug the unit tests using gdb:</li>
+	<ul>
+		<li>Start gdb: <span style="font-weight: bold; font-family: Lucida Console;">gdb run_test</span></li>
+		<li>Run your tests: <span style="font-weight: bold; font-family: Lucida Console;">r</span></li>
+		<li>To trace back to where the crash occurred: <span style="font-weight: bold; font-family: Lucida Console;">bt</span></li>
+		<li>To quit gdb: <span style="font-weight: bold; font-family: Lucida Console;">quit</span></li>
+	</ul>
+	<li>To debug the normal running of the program using gdb:</li>
+	<ul>
+		<li>Start gdb: <span style="font-weight: bold; font-family: Lucida Console;">gdb julius</span></li>
+		<li>To process plain.txt: <span style="font-weight: bold; font-family: Lucida Console;">r &ltplain.txt &gtoutput.txt</span></li>
+		<li>To trace back to where the crash occurred: <span style="font-weight: bold; font-family: Lucida Console;">bt</span></li>
+		<li>To quit gdb: <span style="font-weight: bold; font-family: Lucida Console;">quit</span></li>
+	</ul>
+</ul>
+
+<h2>Submission</h2>
+<p> Submit your work via Git to /pushbox under the directory <strong>"CPracticum"</strong> in the root of your repository. You may push other files, but we will grade </big></big>
+<big><big> </big></big><big style="color: rgb(204, 0, 0);"><big><span style="font-weight: bold; font-family: Lucida Console;">julius.c and main.c</span></big></big><big><big>.
+&nbsp;</big></big><big><big> As always you
+are encouraged to push in increments but only your last submission will
+be used. Your final submission must be entered before end of alloted
+time. Partial credit will be based on partial behavior (e.g. readline or julius). <br>
+<em>Note: very little credit will be given to code that does not compile.</em><br>
+</p>
+<ul>
+  <li>(3pts) correct pushbox</li>
+  <li>(2pts) style</li>
+  <li>(3pts) code compiles</li>
+  <li>(2pts) code runs and terminates normally</li>
+  <li>(5pts) encipher() works</li>
+  <li>(5pts) julius() works</li>
+  <li>(5pts) main and readline() work with stdin</li>
+</ul>
+</body></html>

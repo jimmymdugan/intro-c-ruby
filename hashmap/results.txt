@@ -1,0 +1,108 @@
+
+
+=== Hashmap Contents ===
+BIN
+---
+ 1  ( BLACK , 0 )
+ 2  NULL
+ 3  NULL
+ 4  ( VIOLET , 4 ) --> ( GREEN , 1 )
+ 5  NULL
+ 6  ( GOLD , 2 ) --> ( BLUE , 7 ) --> ( RED , 6 )
+ 7  NULL
+ 8  NULL
+ 9  NULL
+10  NULL
+11  ( CYAN , 5 ) --> ( ORANGE , 3 )
+
+
+Drop single entry (BLACK)
+
+=== Hashmap Contents ===
+BIN
+---
+ 1  NULL
+ 2  NULL
+ 3  NULL
+ 4  ( VIOLET , 4 ) --> ( GREEN , 1 )
+ 5  NULL
+ 6  ( GOLD , 2 ) --> ( BLUE , 7 ) --> ( RED , 6 )
+ 7  NULL
+ 8  NULL
+ 9  NULL
+10  NULL
+11  ( CYAN , 5 ) --> ( ORANGE , 3 )
+
+
+Drop first in list (CYAN)
+
+=== Hashmap Contents ===
+BIN
+---
+ 1  NULL
+ 2  NULL
+ 3  NULL
+ 4  ( VIOLET , 4 ) --> ( GREEN , 1 )
+ 5  NULL
+ 6  ( GOLD , 2 ) --> ( BLUE , 7 ) --> ( RED , 6 )
+ 7  NULL
+ 8  NULL
+ 9  NULL
+10  NULL
+11  ( ORANGE , 3 )
+
+
+Drop middle of list (BLUE)
+
+=== Hashmap Contents ===
+BIN
+---
+ 1  NULL
+ 2  NULL
+ 3  NULL
+ 4  ( VIOLET , 4 ) --> ( GREEN , 1 )
+ 5  NULL
+ 6  ( GOLD , 2 ) --> ( RED , 6 )
+ 7  NULL
+ 8  NULL
+ 9  NULL
+10  NULL
+11  ( ORANGE , 3 )
+
+
+Drop last in list (GREEN)
+
+=== Hashmap Contents ===
+BIN
+---
+ 1  NULL
+ 2  NULL
+ 3  NULL
+ 4  ( VIOLET , 4 )
+ 5  NULL
+ 6  ( GOLD , 2 ) --> ( RED , 6 )
+ 7  NULL
+ 8  NULL
+ 9  NULL
+10  NULL
+11  ( ORANGE , 3 )
+
+
+Drop invalid symbol (BROWN)
+
+=== Hashmap Contents ===
+BIN
+---
+ 1  NULL
+ 2  NULL
+ 3  NULL
+ 4  ( VIOLET , 4 )
+ 5  NULL
+ 6  ( GOLD , 2 ) --> ( RED , 6 )
+ 7  NULL
+ 8  NULL
+ 9  NULL
+10  NULL
+11  ( ORANGE , 3 )
+
+
